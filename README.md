@@ -9,9 +9,16 @@
 ## 📌 The Problem
 Students and researchers spend years acquiring complex, cross-disciplinary skills, yet their capabilities remain trapped in dense, multi-page PDFs, transcripts, and certs. Recruiters and advisors scan these static resumes in under 10 seconds, routinely missing the subtle, deep semantic connections between a student's projects, course syllabi, and actual industry competencies. Flat text fails to convey the multi-dimensional growth of a modern academic path.
 
-## ✨ The "Aha!" Moment
-**What if your resume could organize itself and answer questions with absolute verification?** 
-Pathfolio instantly ingests raw transcripts, certifications, and project papers, uses advanced semantic text processing to extract hidden skills, and maps them onto a dynamic, interactive semantic knowledge graph. It automatically finds relationships between disparate coursework and lets employers semantically search your entire academic timeline—complete with direct, hyperlinked text citations.
+## 💡 The Solution: Interactive Semantic Mapping
+
+**Pathfolio transforms raw academic records into a live, structured skill map that proves competency in seconds.**
+
+Instead of forcing developers or students to maintain dry text portfolios, Pathfolio provides an automated, full-stack pipeline that processes raw transcripts, internship certificates, online course credentials, and academic project papers:
+
+1. **Multimodal Document Parsing**: Instantly reads PDFs, Word files, and certificate images, turning raw unstructured text and visual artifacts into structured datasets.
+2. **Dynamic Taxonomy Graphing**: A customized semantic model parses the extracted text to identify domain categories, concrete technical competencies, and temporal milestones. It maps parent categories (e.g., *Frontend Engineering*, *Artificial Intelligence*) directly to children nodes (e.g., *TypeScript*, *PyTorch*) with interactive visualization edges.
+3. **Chronological Auto-Timeline**: Automatically builds a beautiful vertical timeline showing educational milestones and professional achievements in chronological sequence, eliminating manual entry.
+4. **Contextual Proof with Cited Search**: Rather than making empty claims, recruiters can ask natural language questions (such as *"What has this candidate built using React and Tailwind?"*). Pathfolio answers instantly, citing and linking directly to the specific uploaded document page or certificate where that skill is recorded. Every skill mapped is fully verified and backed by solid source material.
 
 ---
 
