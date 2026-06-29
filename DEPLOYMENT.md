@@ -71,6 +71,27 @@ If you want to use Vercel, you would deploy the **frontend only** (static SPA) a
 
 ---
 
+## 🛠️ Troubleshooting & FAQs
+
+### 1. I get a "CONNECTION LOST OR SERVER OFFLINE. RETRYING IN BACKGROUND..." screen
+If you see this error after deploying:
+* **The Root Cause:** You deployed the app as a **Static Site** (or only built the frontend). Because this is a full-stack application, the frontend is trying to contact the Node/Express backend (`/api/...`) but no server is running to answer!
+* **How to fix on Render:**
+  1. Delete the "Static Site" from your Render Dashboard.
+  2. Create a new service and choose **Web Service** instead of *Static Site*.
+  3. Ensure your Build Command is `npm run build` and your Start Command is `npm run start`.
+  4. Now Render will boot the real Node backend, which serves both the frontend assets and answers the API requests correctly.
+
+### 2. How do the frontend and backend communicate? Do I need to set an API URL environment variable?
+* **No, you do not need an environment variable!** 
+* **Why?** This application is compiled into a single full-stack service. In production, your Express backend (`server.ts`) serves the built static files from the `dist/` directory and listens for API calls on `/api/`.
+* Because they run in the **same process on the same server, on the exact same port and domain**, they communicate natively using relative URLs (like `/api/documents`). This is extremely clean because:
+  - There is no need for CORS (Cross-Origin Resource Sharing) configuration.
+  - No environment variables are needed to tell the frontend where the API is.
+  - It just works out-of-the-box!
+
+---
+
 ## 🔍 How to Get Your Gemini API Key
 To run the AI-powered search and automatic document analysis in production:
 1. Go to [Google AI Studio](https://aistudio.google.com/).
