@@ -2,62 +2,78 @@
 
 This application is a full-stack **React (Vite) + Node.js (Express)** app. It uses the Gemini API for semantic document analysis, stores portfolio metadata in a lightweight local `db.json` file, and saves uploaded documents directly in an `uploads/` folder.
 
-Because the app is **stateful** (it writes data to the filesystem), we recommend **Render** as the primary deployment target, as it supports **Persistent Disks**.
+Because the app relies on writing to the local filesystem (`db.json` and the `uploads/` directory), deployment behavior differs depending on your hosting provider and tier.
 
 ---
 
-## 📌 Option 1: Render (Highly Recommended)
+## 📌 Option 1: Render (Recommended)
 
-Render is the perfect choice for full-stack Node.js servers with local file uploads. By using a **Persistent Disk**, you ensure that your uploaded documents and `db.json` states are preserved across server restarts.
+Render supports full-stack Node.js Express servers out-of-the-box. Below are the steps for both the **Free Tier** and the **Premium Tier with Persistent Disks**.
 
-### Step-by-Step Render Setup
+### 🆓 1. Render Free Tier (Zero-Cost, Ephemeral State)
+You can deploy this application on Render's **Free Tier** completely for free.
+- **How it works:** The app is fully functional! You can upload new resume PDFs, certificates, and projects, and the smart search and graph visualization will update immediately in real-time.
+- **Limitation:** Since Render Free Tier does not support Persistent Disks, the container's storage is **ephemeral**. Any files you upload and any custom graph configurations saved to `db.json` will reset back to the default seeded state when the service goes to sleep (after 15 minutes of inactivity) or restarts (at least once a day).
+- **Best for:** Portfolios, client demos, and quick prototypes where the 4 pre-seeded documents are sufficient and new uploads are only for temporary testing.
 
-1. **Create a Web Service on Render:**
+### 💼 2. Render Paid Tier (Durable State with Persistent Disk)
+If you want your uploads and database state to be permanently saved across restarts and container sleeps:
+- **How it works:** Render offers a **Persistent Disk** (for an extra $1/month or similar).
+- **The code is already pre-configured!** Our backend automatically detects if a persistent Render `/data` disk is attached. If detected, it automatically routes the `db.json` file and your uploaded documents to `/data/db.json` and `/data/uploads/`, completely preserving them.
+
+### Step-by-Step Render Setup (Free or Paid)
+
+1. **Push your code to GitHub:**
+   - Create a GitHub repository and push this project's code to it.
+
+2. **Create a Web Service on Render:**
    - Log in to [Render](https://render.com/).
    - Click **New +** and select **Web Service**.
    - Connect your GitHub repository.
 
-2. **Configure App Settings:**
+3. **Configure Settings:**
    - **Name:** `pathfolio-knowledge-graph`
-   - **Runtime:** `Node`
+   - **Language:** `Node`
+   - **Branch:** `main` (or your default branch)
    - **Build Command:** `npm run build`
    - **Start Command:** `npm run start`
+   - **Instance Type:** Select **Free** (or select a paid plan if you wish to attach a persistent disk).
 
-3. **Add Environment Variables:**
-   Under the **Environment** tab, add:
+4. **Add Environment Variables:**
+   Under the **Environment** tab, click **Add Environment Variable** and add:
    - `NODE_ENV`: `production`
    - `GEMINI_API_KEY`: *(Your Google AI Studio Gemini API Key)*
 
-4. **Add a Persistent Disk (Crucial for keeping your data!):**
-   Since Render instances restart periodically, any files stored in the container (like `db.json` or PDF uploads) are lost unless saved to a persistent disk.
+5. **Attach a Persistent Disk (Paid Tier Only):**
    - Go to the **Disks** tab in your Render Web Service settings.
    - Click **Add Disk**.
    - **Name:** `pathfolio-data`
-   - **Mount Path:** `/data` (We will configure the app to optionally use `/data` if present, see below).
-   - **Size:** `1 GB` (usually free tier compatible).
+   - **Mount Path:** `/data`
+   - **Size:** `1 GB` (More than enough for thousands of resumes/documents).
+   - Save the configuration. Render will rebuild and link your database and uploads folders to the secure persistent disk.
 
 ---
 
 ## ⚡ Option 2: Vercel (Frontend & Serverless)
 
-Vercel is designed for **stateless serverless architectures**. You can deploy this app to Vercel, but note that **any file uploads and database changes (`db.json`) will be temporary and lost when serverless instances spin down**. 
+Vercel is designed for **stateless serverless architectures** and static frontends. 
 
-To deploy on Vercel, we provide a `vercel.json` file that routes traffic to a serverless function wrapper.
+### ⚠️ Limitations on Vercel
+Because Vercel runs on **Serverless Functions**:
+1. **Read-Only File System:** Vercel serverless functions do not allow writing to the local disk. Thus, attempting to upload a document or update `db.json` in production will fail or throw errors.
+2. **Ephemeral Containers:** Serverless functions spin up and down constantly. They do not share storage across requests.
+3. **Verdict:** We **strongly recommend Render over Vercel** for this specific application because of the full-stack nature of document uploads and local JSON persistence.
 
-### Step-by-Step Vercel Setup
-
-1. **Install Vercel CLI or Connect GitHub:**
-   - Push your code to GitHub.
-   - Import your repository into [Vercel](https://vercel.com/).
-2. **Configure Build Settings:**
-   - Vercel automatically detects the Vite config and handles building.
-3. **Configure Environment Variables:**
-   - Add `GEMINI_API_KEY` to your Vercel Project settings.
+### If you still want to deploy to Vercel:
+If you want to use Vercel, you would deploy the **frontend only** (static SPA) and connect it to a separate hosted backend, or restructure the backend code to:
+1. Save uploads to an external cloud bucket like **Amazon S3**, **Supabase Storage**, or **Cloudinary**.
+2. Save portfolio database states to a cloud database like **MongoDB Atlas** or **Supabase PostgreSQL**.
 
 ---
 
-## 🛠️ Making the App Production-Ready for Disks
-
-To ensure the application automatically detects and uses Render's persistent disk `/data` (if configured), we can add a check in our codebase to store `db.json` and `uploads/` inside the `/data` directory when running in production.
-
-Let's make this small update to `server.ts` so that persistent disk support works seamlessly!
+## 🔍 How to Get Your Gemini API Key
+To run the AI-powered search and automatic document analysis in production:
+1. Go to [Google AI Studio](https://aistudio.google.com/).
+2. Click **Get API Key**.
+3. Create a new API key and copy it.
+4. Paste it as the `GEMINI_API_KEY` environment variable in your hosting platform (Render or your preferred server provider).
