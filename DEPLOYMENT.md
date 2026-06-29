@@ -42,7 +42,7 @@ If you want your uploads and database state to be permanently saved across resta
 4. **Add Environment Variables:**
    Under the **Environment** tab, click **Add Environment Variable** and add:
    - `NODE_ENV`: `production`
-   - `GEMINI_API_KEY`: *(Your Google AI Studio Gemini API Key)*
+   - `GEMINI_API_KEY`: *(Your Gemini API Key)*
 
 5. **Attach a Persistent Disk (Paid Tier Only):**
    - Go to the **Disks** tab in your Render Web Service settings.
@@ -93,8 +93,4 @@ If you see this error after deploying:
 ---
 
 ## 🔍 How to Get Your Gemini API Key
-To run the AI-powered search and automatic document analysis in production:
-1. Go to [Google AI Studio](https://aistudio.google.com/).
-2. Click **Get API Key**.
-3. Create a new API key and copy it.
-4. Paste it as the `GEMINI_API_KEY` environment variable in your hosting platform (Render or your preferred server provider).
+To run the AI-powered search and automatic document analysis in production, obtain a valid Gemini API Key and paste it as the `GEMINI_API_KEY` environment variable in your hosting platform (such as Render or your preferred server provider).

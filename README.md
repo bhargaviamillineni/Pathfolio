@@ -11,7 +11,7 @@ Students and researchers spend years acquiring complex, cross-disciplinary skill
 
 ## ✨ The "Aha!" Moment
 **What if your resume could organize itself and answer questions with absolute verification?** 
-Pathfolio instantly ingests raw transcripts, certifications, and project papers, uses the **Gemini 2.5 Flash** model to extract hidden skills, and maps them onto a dynamic, interactive semantic knowledge graph. It automatically finds relationships between disparate coursework and lets employers semantically search your entire academic timeline—complete with direct, hyperlinked text citations.
+Pathfolio instantly ingests raw transcripts, certifications, and project papers, uses advanced semantic text processing to extract hidden skills, and maps them onto a dynamic, interactive semantic knowledge graph. It automatically finds relationships between disparate coursework and lets employers semantically search your entire academic timeline—complete with direct, hyperlinked text citations.
 
 ---
 
@@ -56,7 +56,7 @@ Pathfolio operates as a stateful, full-stack application built to seamlessly rea
 
 ```
 +-----------------------+       +-------------------------+       +-------------------------+
-|   Raw User Uploads    | ----> |   Node.js Express API   | ----> |  Gemini 2.5 Flash LLM   |
+|   Raw User Uploads    | ----> |   Node.js Express API   | ----> |  Semantic Analysis NLP  |
 | (PDF, DOCX, PNG/JPG)  |       |  (Multer File Parsing)  |       | (Structured JSON Extr.) |
 +-----------------------+       +-------------------------+       +-------------------------+
                                              |                                 |
@@ -71,15 +71,15 @@ Pathfolio operates as a stateful, full-stack application built to seamlessly rea
 
 #### 1. Dynamic File Ingestion Engine
 * **Plain Language:** Users upload transcripts, certificates, or resume documents. The app instantly extracts raw text regardless of file type (supporting PDFs, Word documents, and images).
-* **Technical Detail:** Uses `multer` for secure storage, `pdf-parse` for vector PDF extraction, `mammoth` for DOCX parsing, and Google Gemini’s multimodal vision capabilities to run optical character recognition (OCR) on credential certificates and PNG/JPG images.
+* **Technical Detail:** Uses `multer` for secure storage, `pdf-parse` for vector PDF extraction, `mammoth` for DOCX parsing, and integrated multimodal vision capability to run optical character recognition (OCR) on credential certificates and PNG/JPG images.
 
 #### 2. AI Semantic Synthesizer & Knowledge Mapper
 * **Plain Language:** The app analyzes the raw text, identifies core academic concepts, and maps how they connect to form a cohesive "knowledge graph" of your skills.
-* **Technical Detail:** Sends parsed text blocks to **Gemini 2.5 Flash** using highly structured JSON schemas. Gemini maps the data into rigid taxonomy categories, lists associated technologies, generates a chronological timeline, and computes semantic relationship scores to build the graph edges.
+* **Technical Detail:** Sends parsed text blocks to the structured NLP endpoint using rigid JSON schemas. The semantic engine maps the data into rigid taxonomy categories, lists associated technologies, generates a chronological timeline, and computes semantic relationship scores to build the graph edges.
 
 #### 3. Hyperlinked Cited Search Engine
 * **Plain Language:** Allows recruiters or advisors to ask natural questions (e.g., "What experience does this candidate have with neural networks?") and receive a custom-synthesized answer backed by highlighted sources.
-* **Technical Detail:** Performs lightweight client-side TF-IDF or cosine similarity keyword vectors across the extracted document repository, compiles relevant excerpts, sends them to Gemini as a retrieved context window, and returns a cohesive summarized response citing direct document indices.
+* **Technical Detail:** Performs lightweight client-side TF-IDF or cosine similarity keyword vectors across the extracted document repository, compiles relevant excerpts, sends them to the language model as a retrieved context window, and returns a cohesive summarized response citing direct document indices.
 
 ---
 
@@ -90,7 +90,7 @@ Pathfolio operates as a stateful, full-stack application built to seamlessly rea
 | **Frontend** | `React (Vite)`, `TypeScript` | Fast, type-safe reactive user interface |
 | **Styling & UI** | `Tailwind CSS`, `Lucide React` | Premium, responsive, design-forward typography & icons |
 | **Backend** | `Node.js`, `Express` | REST APIs, file-system handlers, and LLM orchestration |
-| **AI Processing** | `@google/genai` (SDK) | Document parsing, structural metadata extraction, semantic search |
+| **AI Processing** | Google GenAI SDK | Document parsing, structural metadata extraction, semantic search |
 | **Database** | `Local JSON` with automatic `/data` Mount | Lightweight, zero-maintenance state engine with persistent disk support |
 
 ---
@@ -99,7 +99,7 @@ Pathfolio operates as a stateful, full-stack application built to seamlessly rea
 
 ### 📋 Prerequisites
 * Node.js v18 or later
-* A Google AI Studio **Gemini API Key**
+* A **Gemini API Key**
 
 ### 🚀 Local Development Setup
 

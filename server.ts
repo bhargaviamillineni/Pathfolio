@@ -289,22 +289,14 @@ async function startServer() {
   // 7. Reset to seed data (perfect for hackathon presentation resets!)
   app.post("/api/reset", (req, res) => {
     try {
-      // Clear uploads folder but preserve the 4 original seed files
-      const seedFilenames = new Set([
-        "file-1782669355258-301212619.pdf",
-        "file-1782670043693-279874350.pdf",
-        "file-1782670173425-984702325.png",
-        "file-1782670259954-750411330.pdf"
-      ]);
+      // Clear uploads folder completely
       const uploadsDir = DBService.UPLOADS_DIR;
       if (fs.existsSync(uploadsDir)) {
         const files = fs.readdirSync(uploadsDir);
         for (const file of files) {
-          if (!seedFilenames.has(file)) {
-            try {
-              fs.unlinkSync(path.join(uploadsDir, file));
-            } catch (_) {}
-          }
+          try {
+            fs.unlinkSync(path.join(uploadsDir, file));
+          } catch (_) {}
         }
       }
 
