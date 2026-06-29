@@ -1,0 +1,6 @@
+{
+  "name": "Pathfolio",
+  "description": "A secure, intelligent system that automatically ingests, categorizes, maps, and searches student certificates, resumes, and portfolios using Gemini models and semantic embeddings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

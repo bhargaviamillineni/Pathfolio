@@ -1,0 +1,131 @@
+{
+  "documents": [
+    {
+      "id": "doc_1782669355262",
+      "filename": "file-1782669355258-301212619.pdf",
+      "mimeType": "application/pdf",
+      "originalName": "AWS.pdf",
+      "text": "**Document Title:** Completion Certificate\n\n**Organization:** AWS Training & Certification\n\n**Certificate Name:** AWS Cloud Quest: Cloud Practitioner\n\n**Completion Date:** June 24, 2026\n\n**Awarded To:** A Bhargavi\n\n**Signature:** Michelle Vaz\n\n**Title of Signatory:** Director, AWS Training & Certification\n\n**Logo:** aws",
+      "status": "completed",
+      "createdAt": "2026-06-28T17:55:55.262Z",
+      "fileSize": 93681,
+      "metadata": {
+        "category": "Certificate",
+        "title": "AWS Cloud Quest: Cloud Practitioner",
+        "issuingOrg": "AWS Training & Certification",
+        "date": "2026-06-24",
+        "technologies": [
+          "AWS",
+          "Cloud Computing"
+        ],
+        "summary": "This document is a completion certificate awarded to A Bhargavi for successfully finishing the AWS Cloud Quest: Cloud Practitioner program. It certifies the attainment of foundational knowledge and skills in AWS cloud services and practices.",
+        "confidence": 1
+      }
+    },
+    {
+      "id": "doc_1782670043697",
+      "filename": "file-1782670043693-279874350.pdf",
+      "mimeType": "application/pdf",
+      "originalName": "infosys.pdf",
+      "text": "Based on the document provided, here is the verbatim extraction of all readable text, organized by semantic categories:\n\n### **Document Title**\n* CERTIFICATE OF COMPLETION\n\n### **Organizations**\n* **Infosys Limited** (Navigate your next)\n* **Infosys Springboard**\n\n### **Recipient**\n* **A Bhargavi**\n\n### **Program & Project Details (Technologies & Topics)**\n* **Program Name:** Internship 6.0 (B 8,9 & 10)\n* **Project Name/Topic:** AI-Enabled Pet Wellness Management System with Scheduling and Marketplace Integration\n* **Key Technologies/Concepts Mentioned:** \n  * AI (Artificial Intelligence)\n  * Scheduling\n  * Marketplace Integration\n\n### **Dates**\n* **Program Duration:** November 24, 2025 to January 30, 2026\n* **Issue Date:** Tuesday, March 24, 2026\n\n### **Authorized Signatory**\n* **Name:** Satheesha B. Nanjappa\n* **Title:** Senior Vice President and Head, Education, Training and Assessment\n* **Organization:** Infosys Limited\n\n### **Verification Details**\n* **Verification Website:** [https://verify.onwingspan.com](https://verify.onwingspan.com)\n\n---\n\n### **Full Verbatim Text**\n\n> **Infosys®**\n> Navigate your next\n> \n> **CERTIFICATE OF COMPLETION**\n> \n> presented to\n> \n> **A Bhargavi**\n> \n> for actively participating and completing the mandatory assignment related to\n> \n> **Internship 6.0 (B 8,9 & 10): AI-Enabled Pet Wellness Management System with Scheduling and Marketplace Integration**\n> \n> conducted from **November 24, 2025** to **January 30, 2026**\n> \n> **Infosys | Springboard**\n> \n> Issued on: Tuesday, March 24, 2026  \n> To verify, scan the QR code at [https://verify.onwingspan.com](https://verify.onwingspan.com)\n> \n> *Satheesha B.N.*  \n> **Satheesha B. Nanjappa**  \n> Senior Vice President and Head  \n> Education, Training and Assessment  \n> Infosys Limited",
+      "status": "completed",
+      "createdAt": "2026-06-28T18:07:23.697Z",
+      "fileSize": 219599,
+      "metadata": {
+        "category": "Certificate",
+        "title": "Certificate of Completion: Internship 6.0 - AI-Enabled Pet Wellness Management System with Scheduling and Marketplace Integration",
+        "issuingOrg": "Infosys Springboard",
+        "date": "2026-03-24",
+        "technologies": [
+          "Artificial Intelligence",
+          "Scheduling",
+          "Marketplace Integration"
+        ],
+        "summary": "This document certifies that A Bhargavi successfully completed Internship 6.0 under Infosys Springboard. The internship program focused on designing and implementing an AI-Enabled Pet Wellness Management System with Scheduling and Marketplace Integration.",
+        "confidence": 0.98
+      }
+    },
+    {
+      "id": "doc_1782670173428",
+      "filename": "file-1782670173425-984702325.png",
+      "mimeType": "image/png",
+      "originalName": "ai-skills-fest-2026.png",
+      "text": "Based on the provided image, here is the extracted information:\n\n**Textual Content:**\n*   **Main Title:** AI Skills Fest\n*   **Date/Year:** 2026\n*   **Organization:** Microsoft\n\n**Visual Elements/Details:**\n*   **Shape:** Hexagonal badge/emblem\n*   **Graphics:** Abstract, flowing multi-colored ribbons (yellow, blue, purple, turquoise) forming a wave-like pattern\n*   **Icons:** Two four-pointed stars (one on each side of the year)\n*   **Logo:** Microsoft logo (four colored squares) followed by the word \"Microsoft\"",
+      "status": "completed",
+      "createdAt": "2026-06-28T18:09:33.428Z",
+      "fileSize": 287499,
+      "metadata": {
+        "category": "Certificate",
+        "title": "AI Skills Fest",
+        "issuingOrg": "Microsoft",
+        "date": "2026",
+        "technologies": [
+          "Artificial Intelligence"
+        ],
+        "summary": "This document verifies completion of the AI Skills Fest program hosted by Microsoft. It signifies the holder's participation in an event focused on developing artificial intelligence skills.",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "doc_1782670259955",
+      "filename": "file-1782670259954-750411330.pdf",
+      "mimeType": "application/pdf",
+      "originalName": "Bhargavi Amillineni.pdf",
+      "text": "Here is the extracted information from the resume:\n\n### **Contact Information**\n*   **Name:** BHARGAVI AMILLINENI\n*   **Phone:** +91 6303366312\n*   **Email:** bhargavi123ammu@gmail.com\n*   **Links:** Portfolio, Linkedin, Github\n\n### **Professional Summary**\nAspiring software engineer with strong foundations in Data Structures and Algorithms, passionate about solving complex computational problems and building efficient systems. Actively engaged in competitive programming and focused on writing optimized, scalable code. Seeking opportunities to apply analytical thinking and problem-solving skills in high-impact technical challenges.\n\n### **Work Experience**\n**Infosys Springboard - Remote**\n*   **Dates:** Dec 2025 - Jan 2026\n*   Developed a full-stack Pet Care application to manage pet health records, veterinary appointments, and pet product purchases.\n*   Designed as a centralized platform that integrates all pet-related services and activities into a single, unified system for user convenience.\n\n### **Projects**\n**PawHaven - Smart Petcare Application** ([Github](https://github.com/))\n*   Developed a full-stack application using Spring Boot, React, and MySQL.\n*   Implemented REST APIs, JWT-based security, and payment integration.\n*   Tested and validated APIs using Postman with focus on code quality.\n\n**ArtEcho – AI Driven Artisan Marketplace** ([Demo](https://demo.com/), [Github](https://github.com/))\n*   Developed an AI-powered web platform connecting local artisans with global buyers\n*   Integrated generative AI to produce automated marketing story cards and audio narratives\n*   Built an intelligent brand-artisan matchmaking system using Gemini models\n\n**MatchPro AI – Resume & Job Description Matcher** ([Demo](https://demo.com/), [Github](https://github.com/))\n*   Built an AI-powered web app that compares resumes with job descriptions using Google Gemini\n*   Identifies missing keywords, skill gaps, and ATS optimization opportunities\n*   Developed visual insights to display skill alignment and improvement areas\n\n### **Educational Background**\n**Bachelor of Technology**\n*   **Institution:** Mohan Babu University - Computer Science And Engineering\n*   **Dates:** Aug 2023 - July 2027(Expected)\n*   **CGPA:** 9.22\n\n### **Skills**\n**Technical Skills**\n*   Java\n*   Data Structures and Algorithms\n*   DBMS\n*   Operating Systems\n*   Computer Networks\n\n**Tools**\n*   Version Control: Git, GitHub\n*   Development Tools: VS Code\n*   API Testing: Postman\n*   Deployment: Netlify, Vercel\n*   Design & Prototyping: Figma\n\n**Soft Skills**\n*   Effective communication\n*   Team collaboration\n*   Time management\n*   Self-motivated and consistent learner\n\n**Languages**\n*   English (Fluent)\n*   Telugu (Fluent)\n\n### **Certification**\n*   Web Development Foundation Course - Udemy\n*   Responsive Web Design - freecodecamp\n*   J.P. Morgan - Software Engineering Job Simulation - Forage\n*   Prompt Design in Vertex AI Skill Badge - GoogleCloud",
+      "status": "completed",
+      "createdAt": "2026-06-28T18:10:59.955Z",
+      "fileSize": 50629,
+      "metadata": {
+        "category": "Resume",
+        "title": "Resume of Bhargavi Amillineni",
+        "issuingOrg": "Personal",
+        "date": "2025",
+        "technologies": [
+          "Java",
+          "Spring Boot",
+          "React",
+          "MySQL",
+          "REST APIs",
+          "JWT",
+          "Google Gemini",
+          "Git",
+          "Postman",
+          "Figma"
+        ],
+        "summary": "This document is a professional resume for Bhargavi Amillineni, an aspiring software engineer. It highlights academic background at Mohan Babu University, full-stack project experience, and technical proficiency in Java, web development frameworks, and AI-driven applications.",
+        "confidence": 1
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel_llm_doc_1782670043697_doc_1782669355262",
+      "sourceId": "doc_1782670043697",
+      "targetId": "doc_1782669355262",
+      "type": "LLM_PROPOSED",
+      "reason": "The completion of the AI-Enabled Pet Wellness internship expands the candidate's technical profile beyond their existing AWS Cloud Practitioner certification by adding hands-on experience with Artificial Intelligence and marketplace system architecture."
+    },
+    {
+      "id": "rel_llm_doc_1782670173428_doc_1782670043697",
+      "sourceId": "doc_1782670173428",
+      "targetId": "doc_1782670043697",
+      "type": "LLM_PROPOSED",
+      "reason": "The AI Skills Fest certificate provides foundational artificial intelligence knowledge that complements the practical application of AI demonstrated in the internship project."
+    },
+    {
+      "id": "rel_llm_doc_1782670259955_doc_1782670043697",
+      "sourceId": "doc_1782670259955",
+      "targetId": "doc_1782670043697",
+      "type": "LLM_PROPOSED",
+      "reason": "The resume of Bhargavi Amillineni documents her technical experience and full-stack development skills which were utilized during the completion of the AI-Enabled Pet Wellness Management System internship."
+    },
+    {
+      "id": "rel_llm_doc_1782670259955_doc_1782670173428",
+      "sourceId": "doc_1782670259955",
+      "targetId": "doc_1782670173428",
+      "type": "LLM_PROPOSED",
+      "reason": "The AI Skills Fest certificate provides formal validation of the Artificial Intelligence knowledge Bhargavi Amillineni possesses and highlights in her resume as part of her technical proficiency."
+    }
+  ],
+  "timelineNarrative": "Bhargavi Amillineni’s professional journey began in 2025 as an aspiring software engineer at Mohan Babu University, where she built a robust foundation in full-stack development using Java, Spring Boot, and React. She rapidly expanded her technical repertoire in 2026 by integrating advanced AI capabilities through Microsoft’s AI Skills Fest and an Infosys Springboard internship focused on an AI-Enabled Pet Wellness Management System. This progression toward intelligent systems culminated in June 2026 with her AWS Cloud Practitioner certification, effectively bridging her application development skills with scalable cloud computing infrastructure. Through this strategic evolution, Bhargavi has demonstrated a clear commitment to mastering the modern tech stack from web architecture to cloud-integrated artificial intelligence."
+}
