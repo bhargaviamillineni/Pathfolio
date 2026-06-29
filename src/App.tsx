@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { FolderKanban, Network, CalendarDays, Search, RefreshCw, AlertCircle, Sparkles } from "lucide-react";
+import { FolderKanban, Network, CalendarDays, Search, RefreshCw, AlertCircle, Sparkles, X, CheckCircle2 } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import DocumentUpload from "./components/DocumentUpload";
 import DocumentList from "./components/DocumentList";
@@ -22,6 +22,32 @@ export default function App() {
   const [isResetting, setIsResetting] = useState(false);
   const [isDeletingId, setIsDeletingId] = useState<string | null>(null);
   const [globalError, setGlobalError] = useState("");
+
+  // Custom dialog & toast states to replace window.confirm / window.alert inside sandbox iframe
+  const [confirmDialog, setConfirmDialog] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    onConfirm: () => void;
+  } | null>(null);
+
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error" | "info";
+  } | null>(null);
+
+  const showToast = (message: string, type: "success" | "error" | "info" = "success") => {
+    setToast({ message, type });
+  };
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => {
+        setToast(null);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
 
   const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -116,8 +142,9 @@ export default function App() {
       setRelationships(prev => prev.filter(r => r.sourceId !== id && r.targetId !== id));
       // Refresh timeline too
       fetchData(false);
+      showToast("Document deleted successfully.", "success");
     } catch (err) {
-      alert(`Delete failed: ${(err as Error).message}`);
+      showToast(`Delete failed: ${(err as Error).message}`, "error");
     } finally {
       setIsDeletingId(null);
     }
@@ -140,36 +167,62 @@ export default function App() {
       // Start polling to trace status
       startPolling();
     } catch (err) {
-      alert(`Retry failed: ${(err as Error).message}`);
+      showToast(`Retry failed: ${(err as Error).message}`, "error");
       fetchData(false); // recover state
     }
   };
 
-  // Handler for resetting seed data
-  const handleResetDatabase = async () => {
-    if (!window.confirm("Are you sure you want to reset the database to initial sandbox seeds? All newly uploaded files will be permanently deleted.")) {
-      return;
-    }
-    
+  // Handler for resetting database to empty state
+  const handleResetDatabase = () => {
+    setConfirmDialog({
+      isOpen: true,
+      title: "Clear Portfolio Data",
+      message: "Are you sure you want to clear your academic portfolio? This will permanently delete all uploaded certificates, files, and AI links so you can start with a fresh blank workspace.",
+      onConfirm: async () => {
+        setConfirmDialog(null);
+        setIsResetting(true);
+        try {
+          const res = await fetch("/api/reset", {
+            method: "POST"
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            throw new Error(data.error || "Failed to clear database.");
+          }
+
+          setDocuments([]);
+          setRelationships([]);
+          setTimelineData([]);
+          setTimelineNarrative("");
+          showToast("Database successfully cleared. You now have a clean slate!", "success");
+        } catch (err) {
+          showToast(`Database clear failed: ${(err as Error).message}`, "error");
+        } finally {
+          setIsResetting(false);
+        }
+      }
+    });
+  };
+
+  // Handler for loading sample seed data
+  const handleLoadSeedData = async () => {
     setIsResetting(true);
     try {
-      const res = await fetch("/api/reset", {
+      const res = await fetch("/api/seed", {
         method: "POST"
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Failed to reset database.");
+        throw new Error(data.error || "Failed to load seed data.");
       }
 
-      // Update state to seed data
       setDocuments(data.state.documents || []);
       setRelationships(data.state.relationships || []);
       setTimelineNarrative(data.state.timelineNarrative || "");
-      // Fetch latest grouped timeline
       fetchData(false);
-      alert("Database successfully restored to pristine, certified seed records.");
+      showToast("Sample academic portfolio successfully loaded!", "success");
     } catch (err) {
-      alert(`Database Reset failed: ${(err as Error).message}`);
+      showToast(`Failed to load seed data: ${(err as Error).message}`, "error");
     } finally {
       setIsResetting(false);
     }
@@ -257,6 +310,7 @@ export default function App() {
                         onDelete={handleDeleteDocument}
                         onRetry={handleRetryDocument}
                         isDeletingId={isDeletingId}
+                        onLoadSeed={handleLoadSeedData}
                       />
                     </div>
                   </div>
@@ -286,6 +340,88 @@ export default function App() {
           )}
         </div>
       </main>
+
+      {/* Custom Confirmation Modal */}
+      <AnimatePresence>
+        {confirmDialog && confirmDialog.isOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" id="confirm-modal-overlay">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setConfirmDialog(null)}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-xs"
+            />
+            
+            {/* Dialog Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="bg-white rounded-3xl p-7 max-w-md w-full shadow-2xl border border-slate-100 relative z-10 flex flex-col items-center text-center"
+              id="confirm-modal-content"
+            >
+              <div className="h-14 w-14 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500 mb-5 shadow-inner">
+                <AlertCircle className="h-7 w-7" />
+              </div>
+              
+              <h3 className="text-lg font-extrabold text-slate-900 tracking-tight mb-2">
+                {confirmDialog.title}
+              </h3>
+              
+              <p className="text-slate-500 text-xs leading-relaxed mb-6">
+                {confirmDialog.message}
+              </p>
+              
+              <div className="flex items-center gap-3 w-full">
+                <button
+                  onClick={() => setConfirmDialog(null)}
+                  className="flex-1 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all cursor-pointer"
+                  id="btn-confirm-cancel"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={confirmDialog.onConfirm}
+                  className="flex-1 px-4 py-3 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-md shadow-rose-500/10 transition-all cursor-pointer"
+                  id="btn-confirm-proceed"
+                >
+                  Clear Data
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Toast Notification Banner */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-5 py-3.5 bg-slate-900 text-white rounded-2xl shadow-xl shadow-slate-950/20 border border-slate-800 text-xs max-w-md w-auto"
+            id="toast-notification"
+          >
+            {toast.type === "success" ? (
+              <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+            ) : toast.type === "error" ? (
+              <AlertCircle className="h-4 w-4 text-rose-400 shrink-0" />
+            ) : (
+              <Sparkles className="h-4 w-4 text-indigo-400 shrink-0" />
+            )}
+            <span className="font-semibold text-slate-100">{toast.message}</span>
+            <button
+              onClick={() => setToast(null)}
+              className="ml-3 p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

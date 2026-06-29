@@ -4,13 +4,28 @@ import path from "path";
 import mammoth from "mammoth";
 import { DBState, DocumentItem, DocumentMetadata, RelationshipEdge, SearchAnswer } from "./types";
 
-const DATA_DIR = fs.existsSync("/data") ? "/data" : process.cwd();
+let DATA_DIR = process.cwd();
+if (fs.existsSync("/data")) {
+  try {
+    const testFile = path.join("/data", ".write_test");
+    fs.writeFileSync(testFile, "test");
+    fs.unlinkSync(testFile);
+    DATA_DIR = "/data";
+  } catch (err) {
+    console.warn("WARNING: /data exists but is not writable. Falling back to process.cwd()", err);
+  }
+}
+
 export const DB_FILE = path.join(DATA_DIR, "db.json");
 export const UPLOADS_DIR = path.join(DATA_DIR, "uploads");
 
 // Initialize uploads dir if not exists
 if (!fs.existsSync(UPLOADS_DIR)) {
-  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  try {
+    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  } catch (err) {
+    console.error("Failed to create uploads directory:", err);
+  }
 }
 
 // Lazy initialization of Gemini
@@ -172,12 +187,6 @@ async function embedContentWithFallback(ai: any, params: any, retries = 3, delay
 }
 
 const getInitialState = (): DBState => {
-  const seedFile = path.join(process.cwd(), "db_seed.json");
-  if (fs.existsSync(seedFile)) {
-    try {
-      return JSON.parse(fs.readFileSync(seedFile, "utf-8"));
-    } catch (_) {}
-  }
   return {
     documents: [],
     relationships: [],
@@ -189,6 +198,20 @@ const getInitialState = (): DBState => {
 export class DBService {
   static readonly DB_FILE = DB_FILE;
   static readonly UPLOADS_DIR = UPLOADS_DIR;
+
+  static loadSeedData(): DBState {
+    try {
+      const seedFile = path.join(process.cwd(), "db_seed.json");
+      if (fs.existsSync(seedFile)) {
+        const seedData = JSON.parse(fs.readFileSync(seedFile, "utf-8"));
+        this.write(seedData);
+        return seedData;
+      }
+    } catch (error) {
+      console.error("Failed to load seed data", error);
+    }
+    return this.read();
+  }
 
   static read(): DBState {
     try {
@@ -216,6 +239,7 @@ export class DBService {
       fs.writeFileSync(DB_FILE, JSON.stringify(state, null, 2));
     } catch (error) {
       console.error("Failed to write to database", error);
+      throw new Error(`Failed to write to database: ${(error as Error).message}`);
     }
   }
 

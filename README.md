@@ -2,11 +2,12 @@
 
 > Transform flat, static academic records into an interactive semantic knowledge graph and cited AI search engine.
 
+![Pathfolio Cover Mockup](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80)
 
 ---
 
 ## 📌 The Problem
-Students and researchers spend years acquiring complex, cross-disciplinary skills, yet their capabilities remain trapped in dense, multi-page PDFs, transcripts, and certs. Recruiters and advisors scan these static resumes in under 10 seconds, routinely missing the subtle, deep semantic connections between a student's projects, course syllabus, and actual industry competencies. Flat text fails to convey the multi-dimensional growth of a modern academic path.
+Students and researchers spend years acquiring complex, cross-disciplinary skills, yet their capabilities remain trapped in dense, multi-page PDFs, transcripts, and certs. Recruiters and advisors scan these static resumes in under 10 seconds, routinely missing the subtle, deep semantic connections between a student's projects, course syllabi, and actual industry competencies. Flat text fails to convey the multi-dimensional growth of a modern academic path.
 
 ## 💡 The Solution: Interactive Semantic Mapping
 

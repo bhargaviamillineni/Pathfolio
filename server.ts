@@ -286,7 +286,7 @@ async function startServer() {
     }
   });
 
-  // 7. Reset to seed data (perfect for hackathon presentation resets!)
+  // 7. Reset to a completely clean, empty database state
   app.post("/api/reset", (req, res) => {
     try {
       // Clear uploads folder completely
@@ -300,14 +300,25 @@ async function startServer() {
         }
       }
 
-      // Reset db file by deleting and reading again (triggers initial seed load)
-      const dbFile = DBService.DB_FILE;
-      if (fs.existsSync(dbFile)) {
-        fs.unlinkSync(dbFile);
-      }
+      // Reset db file to empty state
+      const emptyState = {
+        documents: [],
+        relationships: [],
+        timelineNarrative: ""
+      };
+      DBService.write(emptyState);
       
-      const freshState = DBService.read(); // This will auto-write from db_seed.json and return it
-      res.json({ success: true, message: "Database successfully reset to initial seed values.", state: freshState });
+      res.json({ success: true, message: "Database successfully cleared.", state: emptyState });
+    } catch (err) {
+      res.status(500).json({ error: (err as Error).message });
+    }
+  });
+
+  // 7b. Seed with sample academic portfolio records
+  app.post("/api/seed", (req, res) => {
+    try {
+      const seededState = DBService.loadSeedData();
+      res.json({ success: true, message: "Database successfully seeded with sample records.", state: seededState });
     } catch (err) {
       res.status(500).json({ error: (err as Error).message });
     }

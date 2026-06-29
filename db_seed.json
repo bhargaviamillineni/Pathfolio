@@ -1,5 +1,88 @@
 {
-  "documents": [],
-  "relationships": [],
-  "timelineNarrative": ""
+  "documents": [
+    {
+      "id": "doc_seed_resume",
+      "filename": "",
+      "mimeType": "text/plain",
+      "originalName": "Alex_Mercer_Stanford_CS_Resume.pdf",
+      "text": "ALEX MERCER\nEmail: alex.mercer@cs.stanford.edu\nEducation:\n- Stanford University, B.S. in Computer Science (GPA: 3.92/4.0), Sept 2022 - June 2026\nSelected Coursework:\n- CS229: Machine Learning (Grade: A)\n- CS142: Web Applications (Grade: A)\nExperience:\n- Machine Learning Intern at InnovateTech (Summer 2025): Optimized model training pipelines, built real-time prediction service using FastAPIs.\n- Full Stack Teaching Assistant (Winter 2025): Mentored over 100 students in TypeScript and React component design patterns.\nProjects:\n- Semantic Search Engine (React, PyTorch): Created highly scalable neural search application. Implemented dual-encoder design.",
+      "metadata": {
+        "category": "Resume",
+        "title": "Alex Mercer - Academic & Project Resume",
+        "issuingOrg": "Stanford University",
+        "date": "2026-06",
+        "technologies": ["Python", "TypeScript", "React", "PyTorch", "Docker", "SQL"],
+        "summary": "Academic resume detailing dual-concentration in Software Engineering and Machine Learning, with internship history at tech firms and academic project portfolio.",
+        "confidence": 0.98
+      },
+      "status": "completed",
+      "createdAt": "2026-06-29T08:00:00.000Z",
+      "fileSize": 12450
+    },
+    {
+      "id": "doc_seed_cert",
+      "filename": "",
+      "mimeType": "text/plain",
+      "originalName": "Deep_Learning_Specialization_Certificate.pdf",
+      "text": "DEEPLEARNING.AI CERTIFICATE OF COMPLETION\nThis certifies that Alex Mercer has successfully completed all coursework, assignments, and exams for the five-course series of the Deep Learning Specialization.\nMastered skills include convolutional neural networks (CNNs), recurrent neural networks (RNNs), LSTM models, optimization techniques (Adam, RMSprop), and foundational computer vision architectures. Authorized by Dr. Andrew Ng, Founder of DeepLearning.AI.",
+      "metadata": {
+        "category": "Certificate",
+        "title": "Deep Learning Specialization Certification",
+        "issuingOrg": "DeepLearning.AI",
+        "date": "2025-11-12",
+        "technologies": ["PyTorch", "Python", "Neural Networks", "TensorFlow", "Computer Vision"],
+        "summary": "Comprehensive credential verifying mastery of Neural Networks, Deep Learning architectures, Optimization algorithms, and Generative Adversarial Networks.",
+        "confidence": 0.95
+      },
+      "status": "completed",
+      "createdAt": "2026-06-29T08:05:00.000Z",
+      "fileSize": 8450
+    },
+    {
+      "id": "doc_seed_report",
+      "filename": "",
+      "mimeType": "text/plain",
+      "originalName": "CS142_Interactive_Relationship_Graph_Project_Report.pdf",
+      "text": "PROJECT REPORT: SEMANTIC INTERACTIVE RELATIONSHIP GRAPH DESIGN\nCourse: CS142 Web Applications Capstone\nAuthor: Alex Mercer\nAbstract: This report explores architectural approaches for rendering responsive knowledge network maps containing over 100 concurrent node interactions. We implemented an Express.js and Node.js REST API feeding data to a React front-end powered by standard coordinate mappings and custom canvas drawing. The layout utilizes Tailwind CSS and custom visual accents, avoiding performance bottlenecks.",
+      "metadata": {
+        "category": "Project Report",
+        "title": "Advanced Semantic Mapping System Project",
+        "issuingOrg": "Stanford University CS142",
+        "date": "2026-03-10",
+        "technologies": ["React", "TypeScript", "Tailwind CSS", "Express", "Node.js", "D3.js"],
+        "summary": "Capstone technical report on designing a high-performance interactive layout for displaying complex dependency graphs in real-time.",
+        "confidence": 0.96
+      },
+      "status": "completed",
+      "createdAt": "2026-06-29T08:10:00.000Z",
+      "fileSize": 15600
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel_seed_1",
+      "sourceId": "doc_seed_resume",
+      "targetId": "doc_seed_cert",
+      "type": "SEMANTICALLY_RELATED",
+      "reason": "Both documents demonstrate deep competencies in machine learning and Python. The Stanford Computer Science resume explicitly details CS229 coursework and a ML internship, which directly aligns with the DeepLearning.AI specialization certifying neural network mastery.",
+      "score": 0.92
+    },
+    {
+      "id": "rel_seed_2",
+      "sourceId": "doc_seed_resume",
+      "targetId": "doc_seed_report",
+      "type": "SEMANTICALLY_RELATED",
+      "reason": "The Stanford resume mentions experience with frontend teaching assistantship in React and TypeScript, which is the exact technology stack and methodology detailed in the CS142 Web Applications interactive project report.",
+      "score": 0.88
+    },
+    {
+      "id": "rel_seed_3",
+      "sourceId": "doc_seed_cert",
+      "targetId": "doc_seed_report",
+      "type": "SEMANTICALLY_RELATED",
+      "reason": "While one is machine learning focused and the other is web systems focused, both documents highlight advanced conceptual engineering and system architecture frameworks applied during Alex Mercer's academic years at Stanford.",
+      "score": 0.81
+    }
+  ],
+  "timelineNarrative": "In 2022, Alex Mercer entered Stanford University to pursue a B.S. in Computer Science. In late 2025, Alex completed the prestigious DeepLearning.AI Deep Learning Specialization under Andrew Ng, mastering neural networks and deep model architectures. In early 2026, Alex published the CS142 Web Application project report on interactive graph layouts. Finally, in June 2026, Alex graduated with honors, ready to apply interdisciplinary skills across modern web systems and machine learning domains."
 }

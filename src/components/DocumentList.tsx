@@ -1,5 +1,5 @@
 import React from "react";
-import { FileText, Image, Globe, RefreshCw, AlertTriangle, ExternalLink, Trash2, Calendar, Award, CheckCircle2 } from "lucide-react";
+import { FileText, Image, Globe, RefreshCw, AlertTriangle, ExternalLink, Trash2, Calendar, Award, CheckCircle2, Sparkles } from "lucide-react";
 import { DocumentItem } from "../types";
 
 interface DocumentListProps {
@@ -7,9 +7,10 @@ interface DocumentListProps {
   onDelete: (id: string) => void;
   onRetry: (id: string) => void;
   isDeletingId: string | null;
+  onLoadSeed?: () => void;
 }
 
-export default function DocumentList({ documents, onDelete, onRetry, isDeletingId }: DocumentListProps) {
+export default function DocumentList({ documents, onDelete, onRetry, isDeletingId, onLoadSeed }: DocumentListProps) {
   const getFileIcon = (mimeType: string) => {
     if (mimeType.includes("pdf")) return <FileText className="h-4.5 w-4.5 text-rose-500" />;
     if (mimeType.includes("word") || mimeType.includes("docx")) return <FileText className="h-4.5 w-4.5 text-blue-500" />;
@@ -46,6 +47,15 @@ export default function DocumentList({ documents, onDelete, onRetry, isDeletingI
         <p className="text-xs text-slate-400 mt-2 max-w-sm mx-auto leading-relaxed">
           Upload certificates, internship letters, or paste web portfolios above to see real-time AI organization.
         </p>
+        {onLoadSeed && (
+          <button
+            onClick={onLoadSeed}
+            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-md shadow-indigo-500/10 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            Load Sample Seed Data
+          </button>
+        )}
       </div>
     );
   }
