@@ -2,6 +2,8 @@
 
 > Transform flat, static academic records into an interactive semantic knowledge graph and cited AI search engine.
 
+<img width="1672" height="941" alt="ChatGPT Image Jun 29, 2026, 09_26_16 PM" src="https://github.com/user-attachments/assets/15155b32-2939-41f0-9f46-dfe6b626d40c" />
+
 
 ---
 
@@ -53,6 +55,17 @@ Instead of forcing developers or students to maintain dry text portfolios, Pathf
 |                                 +------------------------------------+  |
 +-------------------------------------------------------------------------+
 ```
+
+<img width="946" height="439" alt="image" src="https://github.com/user-attachments/assets/bccea057-87c0-4c78-a3c4-19ebf8f87c7e" />
+
+<img width="950" height="437" alt="image" src="https://github.com/user-attachments/assets/295b0799-6d4f-47ef-a4ec-aef6ae7ace26" />
+
+<img width="955" height="439" alt="image" src="https://github.com/user-attachments/assets/16e99cc6-0453-4958-9bc6-88df0deff3bf" />
+
+<img width="956" height="437" alt="image" src="https://github.com/user-attachments/assets/e2d13a6f-30df-405a-8674-fc227a0e5e7b" />
+
+
+
 
 ---
 
